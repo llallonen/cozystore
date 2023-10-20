@@ -1,20 +1,28 @@
-import type { Config } from 'tailwindcss'
+import type { Config } from "tailwindcss";
 
 const config: Config = {
   content: [
-    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
-  theme: {
-    extend: {
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+  daisyui: {
+    themes: [
+      {
+        mytheme: {
+          primary: "#b8fcae",
+          secondary: "#99ed90",
+          accent: "#78caed",
+          neutral: "#1a262d",
+          "base-100": "#2d3467",
+          info: "#76c5ea",
+          success: "#21e4ac",
+          warning: "#e7a727",
+          error: "#fb6565",
+        },
       },
-    },
+    ],
   },
-  plugins: [],
-}
-export default config
+  plugins: [require("daisyui")],
+};
+export default config;
