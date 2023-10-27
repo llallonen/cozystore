@@ -14,13 +14,13 @@ async function addProduct(formData: FormData) {
   const imageUrl = formData.get("imageURL")?.toString();
   const price = Number(formData.get("price"));
 
-//   if (!name || !description || !imageUrl || !price) {
-//     throw Error("Missing required fields values");
-//   }
+  if (!name || !description || !imageUrl || !price) {
+    throw Error("Missing required fields values");
+  }
 
-//   await prisma.products.create({
-//     data: { name, description, imageUrl, price },
-//   });
+  await prisma.product.create({
+    data: { name, description, imageUrl, price },
+  });
 
   redirect('/')
 }
