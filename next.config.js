@@ -2,6 +2,7 @@
 const nextConfig = {
   images: {
     remotePatterns: [{ hostname: "images.unsplash.com/" }],
+    domains: ["images.unsplash.com"],
   },
   experimental: {
     serverActions: true,
