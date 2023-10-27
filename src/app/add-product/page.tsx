@@ -1,3 +1,4 @@
+import FormSubmitBtn from "@/components/FormSubmitBtn";
 import prisma from "@/lib/db/prisma";
 import { redirect } from "next/navigation";
 
@@ -13,13 +14,13 @@ async function addProduct(formData: FormData) {
   const imageUrl = formData.get("imageURL")?.toString();
   const price = Number(formData.get("price"));
 
-  if (!name || !description || !imageUrl || !price) {
-    throw Error("Missing required fields values");
-  }
+//   if (!name || !description || !imageUrl || !price) {
+//     throw Error("Missing required fields values");
+//   }
 
-  await prisma.products.create({
-    data: { name, description, imageUrl, price },
-  });
+//   await prisma.products.create({
+//     data: { name, description, imageUrl, price },
+//   });
 
   redirect('/')
 }
@@ -28,7 +29,7 @@ export default function AddProductPage() {
   return (
     <div>
       <h1 className="mb-3 text-lg font-bold">Add Product</h1>
-      <form>
+      <form action={addProduct}>
         <input
           required
           name="name"
@@ -55,9 +56,7 @@ export default function AddProductPage() {
           type="number"
           className="input input-bordered mb-3 w-full"
         />
-        <button className="btn btn-primary btn-block" type="submit">
-          Add product
-        </button>
+        <FormSubmitBtn className="btn-block">Add product</FormSubmitBtn>
       </form>
     </div>
   );
