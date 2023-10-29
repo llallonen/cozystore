@@ -1,13 +1,17 @@
-import { Cart } from "@prisma/client";
+import { Cart, Prisma } from "@prisma/client";
 import prisma from "./prisma";
 import { cookies } from "next/dist/client/components/headers";
 
-export type ShoppingCart = Cart & {
-    size: number,
-    subtotal: number
-}
+export type CardWithProducts = Prisma.CartGetPayload<{
+  include: { items: { include: { product: true } } };
+}>;
 
-export async function getCart() {
+export type ShoppingCart =  CardWithProducts & {
+  size: number;
+  subtotal: number;
+};
+
+export async function getCart(): Promise<ShoppingCart | null> {
   const localCartId = cookies().get("localCartId")?.value;
   const cart = localCartId
     ? await prisma.cart.findUnique({
@@ -30,10 +34,17 @@ export async function getCart() {
   };
 }
 
-export async function createCart() {
+export async function createCart(): Promise<ShoppingCart> {
   const newCart = await prisma.cart.create({
     data: {},
   });
 
   cookies().set("localCartId", newCart.id);
+
+  return {
+    ...newCart,
+    items: [],
+    size: 0,
+    subtotal: 0,
+  };
 }
