@@ -33,7 +33,7 @@ export default function CartItem({
           alt={product.name}
           width={200}
           height={200}
-          className="rounded-lg"
+          className="rounded-lg brr"
         />
       </div>
       <div>
@@ -51,16 +51,14 @@ export default function CartItem({
               });
             }}
           >
+            <option value={0}>0 (Remove)</option>
             {quatityOpt}
           </select>
         </div>
         <div className="flex items-center gap-3">
           Total: {formatPrice(product.price * quantity)}
-          {isPending && (
-          <span className="loading loading-spinner loading-sm" />
-        )}
+          {isPending && <span className="loading loading-spinner loading-sm" />}
         </div>
-
       </div>
       <div className="divider"></div>
     </div>
