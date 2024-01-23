@@ -4,12 +4,12 @@ import { useState, useTransition } from "react";
 
 interface AddToCartBtnProps {
   productId: string;
-  incProductQuatity: (productId: string) => Promise<void>;
+  incProductQuantity: (productId: string) => Promise<void>;
 }
 
 export default function AddToCartBtn({
   productId,
-  incProductQuatity,
+  incProductQuantity,
 }: AddToCartBtnProps) {
   const [isPending, startTransition] = useTransition();
   const [success, setSuccess] = useState(false);
@@ -21,7 +21,7 @@ export default function AddToCartBtn({
         onClick={() => {
           setSuccess(false);
           startTransition(async () => {
-            await incProductQuatity(productId);
+            await incProductQuantity(productId);
             setSuccess(true);
           });
         }}
