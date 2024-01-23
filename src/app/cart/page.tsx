@@ -1,7 +1,8 @@
 import { getCart } from "@/lib/db/cart";
 import CartItem from "./ CartItem";
-import { setProductQuatity } from "../products/[id]/actions";
+
 import { formatPrice } from "@/lib/format";
+import { setProductQuantity } from "../products/[id]/actions/setProductQuantity";
 
 export const metadata = {
   title: "Your cart - cozystore",
@@ -15,7 +16,7 @@ export default async function CartPage() {
         <CartItem
           cartItem={item}
           key={item.id}
-          setProductQuantity={setProductQuatity}
+          setProductQuantity={setProductQuantity}
         />
       ))}
       {!cart?.items.length && (
