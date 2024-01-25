@@ -1,8 +1,17 @@
 import ProductCard from "@/components/ProductCard";
 import prisma from "@/lib/db/prisma";
+import { Metadata } from "next";
 
 interface SearchPageProprs {
   searchParams: { query: string };
+}
+
+export function generateMetadata({
+  searchParams: { query },
+}: SearchPageProprs): Metadata {
+  return {
+    title: `Search: ${query} - Cozystore`,
+  };
 }
 
 export default async function SearchPage({
