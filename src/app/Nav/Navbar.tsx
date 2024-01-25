@@ -25,10 +25,11 @@ export default async function Navbar() {
   return (
     <div className="bg-base-300">
       <div className="navbar m-auto max-w-6xl flex-col gap-2 sm:flex-row">
-        <div className="flex-1">
+        <div className="flex-1 gap-3">
           <Link href="/" className="btn btn-ghost btn-circle text-xl normal-case">
             <Image src={logo} height={40} width={40} alt="cozystore" />
           </Link>
+          <Link href='/add-product' className="btn normal-case">Add a new good</Link>
         </div>
         <div className="flex-none gap-2">
           <form action={searchProduct}>

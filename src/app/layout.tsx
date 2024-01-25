@@ -19,10 +19,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className="flex h-screen flex-col">
       <SessionProvider>
         <Navbar />
-        <main className="max-w-4xl min-w-[300px] m-auto p-4">{children}</main>
+        <main className="max-w-4xl min-w-[300px] flex-1 m-auto p-4">{children}</main>
         <Footer />
         </SessionProvider>
       </body>

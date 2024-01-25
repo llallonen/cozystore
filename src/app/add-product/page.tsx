@@ -53,7 +53,7 @@ export default async function AddProductPage() {
         <input
           required
           name="imageURL"
-          placeholder="image URL"
+          placeholder="image URL (please use only unsplash.com URLs)"
           type="url"
           className="input input-bordered mb-3 w-full"
         />
